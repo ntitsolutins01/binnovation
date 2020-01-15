@@ -94,9 +94,11 @@
     <Content Include="assets\images\faces\face8.jpg" />
     <Content Include="assets\images\faces\face9.jpg" />
     <Content Include="assets\images\favicon.png" />
+    <Content Include="assets\images\img-logo-white.png" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\logo.svg" />
     <Content Include="assets\images\sidebar\sidebar-bg.jpg" />
+    <Content Include="assets\images\trello.PNG" />
     <Content Include="assets\js\chartjs.js" />
     <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\material.js" />
@@ -631,6 +633,20 @@
     <Content Include="assets\vendors\material-design-icons\iconfont\material-icons.css" />
     <Content Include="assets\vendors\material-design-icons\iconfont\MaterialIcons-Regular.svg" />
     <Content Include="assets\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="ata.html" />
+    <Content Include="ata_arquivos\colorschememapping.xml" />
+    <Content Include="ata_arquivos\filelist.xml" />
+    <Content Include="ata_arquivos\header.htm" />
+    <Content Include="ata_arquivos\image001.png" />
+    <Content Include="ata_arquivos\item0014.xml" />
+    <Content Include="ata_arquivos\item0016.xml" />
+    <Content Include="ata_arquivos\item0018.xml" />
+    <Content Include="ata_arquivos\plchdr.htm" />
+    <Content Include="ata_arquivos\props015.xml" />
+    <Content Include="ata_arquivos\props017.xml" />
+    <Content Include="ata_arquivos\props019.xml" />
+    <Content Include="trello.html" />
+    <Content Include="total-os.html" />
     <Content Include="dashboard.html" />
     <Content Include="login.html" />
     <Content Include="Web.config" />
@@ -702,7 +718,12 @@
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="curriculos\Preposto.pdf" />
+    <Content Include="curriculos\Requisito.pdf" />
+    <Content Include="ata_arquivos\oledata.mso" />
+    <Content Include="ata_arquivos\themedata.thmx" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -710,6 +731,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

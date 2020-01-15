@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Total OSs</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
@@ -17,6 +17,46 @@
     <link rel="stylesheet" href="../assets/css/demo/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../assets/images/favicon.png" />
+    <style>
+        #container {
+            height: 400px; 
+        }
+
+        .highcharts-figure, .highcharts-data-table table {
+            min-width: 310px; 
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+
+    </style>
 </head>
 <body>
     <script src="../assets/js/preloader.js"></script>
@@ -72,7 +112,7 @@
                         <div class="mdc-list-item mdc-drawer-item">
                             <a class="mdc-drawer-link" href="trello.html">
                                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon mdi mdi-trello" aria-hidden="true"></i>
-                                Trello 
+                                Trello
                             </a>
                         </div>
                     </nav>
@@ -221,7 +261,7 @@
                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
                                 <div class="mdc-card info-card info-card--warning">
                                     <div class="card-inner">
-                                        <a href="total-os.html">
+                                        <a href="ata.html">
                                             <h5 class="card-title">Total de OSs</h5>
                                         </a>
                                         <h5 class="font-weight-light pb-2 mb-1 border-bottom">47</h5>
@@ -272,16 +312,21 @@
                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                                 <div class="mdc-card">
                                     <div class="d-flex justify-content-between">
-                                        <h4 class="card-title mb-0">Faturamento OSs</h4>
+                                        <h4 class="card-title mb-0">Total de OSs: 47</h4>
                                     </div>
                                     <div class="mdc-layout-grid__inner mt-2">
                                         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
 
                                             <script src="https://code.highcharts.com/highcharts.js"></script>
-                                            <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                                            <script src="https://code.highcharts.com/highcharts-3d.js"></script>
                                             <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-                                            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                            <figure class="highcharts-figure">
+                                                <div id="container"></div>
+                                                
+                                            </figure>
 
 
                                         </div>
@@ -325,118 +370,53 @@
     <script>
 
         Highcharts.chart('container', {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
             title: {
                 text: ''
             },
-            xAxis: {
-                categories: ['Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Janeiro']
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
             },
-            labels: {
-                items: [{
-                    html: '',
-                    style: {
-                        left: '50px',
-                        top: '18px',
-                        color: ( // theme
-                            Highcharts.defaultOptions.title.style &&
-                            Highcharts.defaultOptions.title.style.color
-                        ) || 'black'
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
                     }
-                }]
+                }
             },
             series: [{
-                type: 'column',
-                name: 'Total OSs Enviadas (R$)',
-                data: [38670.24, 41780.36, 19440.28, 6188.98, 4862.41, 126067.91, 116486.01],
-                color: '#5166C0',
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: '#FFFFFF',
-                    align: 'right',
-                    format: '{point.y:.1f}', // one decimal
-                    y: 10, // 10 pixels down from the top
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
-                    }
-                }
-            }, {
-                type: 'column',
-                name: 'Total OSs Faturadas(R$)',
-                data: [4200.91, 29447.37, 13251.32, 1326.57, 12168.74, 9581.90, 12137.75],
-                color: '#64B448',
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: '#FFFFFF',
-                    align: 'right',
-                    format: '{point.y:.1f}', // one decimal
-                    y: 10, // 10 pixels down from the top
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
-                    }
-                }
-            }, {
-                type: 'spline',
-                name: 'PFs não Faturados',
-                data: [7500.00, 2700.00, 1300.00, 1000.00, 1600.00, 25500.00, 22900.00],
-                color: '#EA4335',
-                marker: {
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[3],
-                    fillColor: 'white'
-                },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function () {
-                        return this.y / 100;
-                    }
-                }
-            }
-                //, {
-                //    type: 'pie',
-                //    name: 'Total de OSs',
-                //    colors: ['#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
-                //    data: [{
-                //        name: 'Julho',
-                //        y: 6,
-                //        color: '#E04736'
-                //    }, {
-                //        name: 'Agosto',
-                //        y: 17,
-                //        color: '#377CB3'
-                //    }, {
-                //        name: 'Setembro',
-                //        y: 2,
-                //        color: '#EABE0B'
-                //    }, {
-                //        name: 'Outubro',
-                //        y: 0,
-                //        color: '#77a1e5'
-                //    }, {
-                //        name: 'Novembro',
-                //        y: 0,
-                //        color: '#c42525'
-                //    }, {
-                //        name: 'Dezembro',
-                //        y: 0,
-                //        color: '#a6c96a'
-                //    }, {
-                //        name: 'Janeiro',
-                //        y: 0,
-                //        color: '#a6c96a'
-                //    }],
-                //    center: [500, 80],
-                //    size: 100,
-                //    showInLegend: false,
-                //    dataLabels: {
-                //        enabled: true,
-                //        format: '<b>{point.name}</b>:<br>Qtd OSs: {point.y}'
-                //    }
-                //}
-            ]
+                type: 'pie',
+                name: 'Quantidade',
+                //colors: ['#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
+                data: [
+                    ['SES', 27.6],
+                    {
+                        name: 'Em execução',
+                        y: 25.5,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Em homologação', 19.14],
+                    ['Finalizadas', 27.6],
+                    ['Faturadas', 31.9]
+                ]
+            }]
         });
 
 
