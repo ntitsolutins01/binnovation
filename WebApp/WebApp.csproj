@@ -645,6 +645,8 @@
     <Content Include="ata_arquivos\props015.xml" />
     <Content Include="ata_arquivos\props017.xml" />
     <Content Include="ata_arquivos\props019.xml" />
+    <Content Include="login-invalido.html" />
+    <Content Include="historico.html" />
     <Content Include="trello.html" />
     <Content Include="total-os.html" />
     <Content Include="dashboard.html" />
@@ -718,10 +720,10 @@
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
-    <Content Include="curriculos\Preposto.pdf" />
-    <Content Include="curriculos\Requisito.pdf" />
     <Content Include="ata_arquivos\oledata.mso" />
     <Content Include="ata_arquivos\themedata.thmx" />
+    <Content Include="Preposto.pdf" />
+    <Content Include="Requisito.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Web.Debug.config">

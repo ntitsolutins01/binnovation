@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Histórico</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
@@ -17,6 +17,47 @@
     <link rel="stylesheet" href="../assets/css/demo/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../assets/images/favicon.png" />
+    <style>
+        .highcharts-figure, .highcharts-data-table table {
+            min-width: 310px; 
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        #container {
+            height: 400px;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+
+
+    </style>
 </head>
 <body>
     <script src="../assets/js/preloader.js"></script>
@@ -227,7 +268,7 @@
                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
                                 <div class="mdc-card info-card info-card--warning">
                                     <div class="card-inner">
-                                        <a href="total-os.html">
+                                        <a href="ata.html">
                                             <h5 class="card-title">Total de OSs</h5>
                                         </a>
                                         <h5 class="font-weight-light pb-2 mb-1 border-bottom">47</h5>
@@ -278,16 +319,21 @@
                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                                 <div class="mdc-card">
                                     <div class="d-flex justify-content-between">
-                                        <h4 class="card-title mb-0">Faturamento OSs</h4>
+                                        <h4 class="card-title mb-0">Histórico de Faturamento Anual</h4>
                                     </div>
                                     <div class="mdc-layout-grid__inner mt-2">
                                         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
 
                                             <script src="https://code.highcharts.com/highcharts.js"></script>
-                                            <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                                            <script src="https://code.highcharts.com/modules/data.js"></script>
+                                            <script src="https://code.highcharts.com/modules/drilldown.js"></script>
                                             <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-                                            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                            <figure class="highcharts-figure">
+                                                <div id="container"></div>
+                                            </figure>
 
 
                                         </div>
@@ -330,120 +376,326 @@
 
     <script>
 
-        Highcharts.chart('container', {
-            title: {
-                text: ''
-            },
-            xAxis: {
-                categories: ['Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Janeiro']
-            },
-            labels: {
-                items: [{
-                    html: '',
-                    style: {
-                        left: '50px',
-                        top: '18px',
-                        color: ( // theme
-                            Highcharts.defaultOptions.title.style &&
-                            Highcharts.defaultOptions.title.style.color
-                        ) || 'black'
-                    }
-                }]
-            },
-            series: [{
-                type: 'column',
-                name: 'Total OSs Enviadas (R$)',
-                data: [38670.24, 41780.36, 19440.28, 6188.98, 4862.41, 126067.91, 116486.01],
-                color: '#5166C0',
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: '#FFFFFF',
-                    align: 'right',
-                    format: '{point.y:.1f}', // one decimal
-                    y: 10, // 10 pixels down from the top
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
-                    }
-                }
-            }, {
-                type: 'column',
-                name: 'Total OSs Faturadas(R$)',
-                data: [4200.91, 29447.37, 13251.32, 1326.57, 12168.74, 9581.90, 12137.75],
-                color: '#64B448',
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: '#FFFFFF',
-                    align: 'right',
-                    format: '{point.y:.1f}', // one decimal
-                    y: 10, // 10 pixels down from the top
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
-                    }
-                }
-            }, {
-                type: 'spline',
-                name: 'PFs não Faturados',
-                data: [7500.00, 2700.00, 1300.00, 1000.00, 1600.00, 25500.00, 22900.00],
-                color: '#EA4335',
-                marker: {
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[3],
-                    fillColor: 'white'
+      
+Highcharts.setOptions({
+    lang: {
+        decimalPoint: ',',
+        thousandsSep: '.'
+    }
+});
+
+Highcharts.chart('container', {
+
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Histórico de Faturamento Anual '
+    },
+    subtitle: {
+        text: 'Clique na coluna para ver o detalhamento'
+    },
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        }
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Valor Total Faturado'
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>R$ {point.y}</b> <br/>'
+    },
+
+    series: [
+        {
+            name: "Faturamento",
+            colorByPoint: true,
+            colors: ['#ff0000',
+        '#ffcc00', '#33cc33', '#77a1e5', '#c42525', '#a6c96a'],
+            data: [
+                {
+                    name: "2016",
+                    y: 194343.67,
+                    drilldown: "2016"
                 },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function () {
-                        return this.y / 100;
-                    }
+                {
+                    name: "2017",
+                    y: 394987.10,
+                    drilldown: "2017"
+                },
+                {
+                    name: "2018",
+                    y: 740035.13,
+                    drilldown: "2018"
+                },
+                {
+                    name: "2019",
+                    y: 23172.81,
+                    drilldown: "2019"
                 }
-            }
-                //, {
-                //    type: 'pie',
-                //    name: 'Total de OSs',
-                //    colors: ['#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
-                //    data: [{
-                //        name: 'Julho',
-                //        y: 6,
-                //        color: '#E04736'
-                //    }, {
-                //        name: 'Agosto',
-                //        y: 17,
-                //        color: '#377CB3'
-                //    }, {
-                //        name: 'Setembro',
-                //        y: 2,
-                //        color: '#EABE0B'
-                //    }, {
-                //        name: 'Outubro',
-                //        y: 0,
-                //        color: '#77a1e5'
-                //    }, {
-                //        name: 'Novembro',
-                //        y: 0,
-                //        color: '#c42525'
-                //    }, {
-                //        name: 'Dezembro',
-                //        y: 0,
-                //        color: '#a6c96a'
-                //    }, {
-                //        name: 'Janeiro',
-                //        y: 0,
-                //        color: '#a6c96a'
-                //    }],
-                //    center: [500, 80],
-                //    size: 100,
-                //    showInLegend: false,
-                //    dataLabels: {
-                //        enabled: true,
-                //        format: '<b>{point.name}</b>:<br>Qtd OSs: {point.y}'
-                //    }
-                //}
             ]
-        });
+        }
+    ],
+    drilldown: {
+        series: [
+            {
+                name: "2016",
+                id: "2016",
+                data: [
+                    [
+                        "jun-16",
+                        36871.14
+                    ],
+                    [
+                        "set-16",
+                        17054.09
+                    ],
+                    [
+                        "out-16",
+                        1678.67
+                    ],
+                    [
+                        "nov-16",
+                        127279.93
+                    ],
+                    [
+                        "dez-16",
+                        11459.85
+                    ]
+                ]
+            },
+            {
+                name: "2017",
+                id: "2017",
+                data: [
+                    [
+                        "jan",
+                        9678.40
+                    ],
+                    [
+                        "fev",
+                        0
+                    ],
+                    [
+                        "mar",
+                        3728.80
+                    ],
+                    [
+                        "abr",
+                        53861.99
+                    ],
+                    [
+                        "mai",
+                        26430.99
+                    ],
+                    [
+                        "jun",
+                        10564.92
+
+                    ],
+                    [
+                        "jul",
+                        108690.79
+                    ],
+                    [
+                        "set",
+                        63978.96
+                    ],
+                    [
+                        "out",
+                        19395.42
+
+                    ],
+                    [
+                        "nov",
+                        69334.87
+                    ],
+                    [
+                        "dez",
+                        29321.96
+
+                    ]
+                ]
+            },
+            {
+                name: "2018",
+                id: "2018",
+                data: [
+                    [
+                        "jan",
+                        71172.67
+                    ],
+                    [
+                        "fev",
+                        113796.25
+                    ],
+                    [
+                        "mar",
+                        70547.81
+                    ],
+                    [
+                        "abr",
+                        115039.20
+                    ],
+                    [
+                        "mai",
+                        0
+                    ],
+                    [
+                        "jun",
+                        81242.68
+
+                    ],
+                    [
+                        "jul",
+                        68931.99
+                    ],
+                    [
+                        "set",
+                        14853.13
+
+                    ],
+                    [
+                        "out",
+                        86547.82
+
+                    ],
+                    [
+                        "nov",
+                        0
+                    ],
+                    [
+                        "dez",
+                        117903.59
+
+
+                    ]
+                ]
+            },
+            {
+                name: "2019",
+                id: "2019",
+                data: [
+                    [
+                        "jan",
+                        23172.81
+
+                    ],
+                    [
+                        "fev",
+                        0
+                    ],
+                    [
+                        "mar",
+                        0
+                    ],
+                    [
+                        "abr",
+                        0
+                    ],
+                    [
+                        "mai",
+                        0
+                    ],
+                    [
+                        "jun",
+                        0
+
+                    ],
+                    [
+                        "jul",
+                        0
+                    ],
+                    [
+                        "set",
+                        0
+
+                    ],
+                    [
+                        "out",
+                        0
+
+                    ],
+                    [
+                        "nov",
+                        0
+                    ],
+                    [
+                        "dez",
+                        0
+
+
+                    ]
+                ]
+            },
+            {
+                name: "Edge",
+                id: "Edge",
+                data: [
+                    [
+                        "v16",
+                        2.6
+                    ],
+                    [
+                        "v15",
+                        0.92
+                    ],
+                    [
+                        "v14",
+                        0.4
+                    ],
+                    [
+                        "v13",
+                        0.1
+                    ]
+                ]
+            },
+            {
+                name: "Opera",
+                id: "Opera",
+                data: [
+                    [
+                        "v50.0",
+                        0.96
+                    ],
+                    [
+                        "v49.0",
+                        0.82
+                    ],
+                    [
+                        "v12.1",
+                        0.14
+                    ]
+                ]
+            }
+        ]
+    }
+});
+
+
+
+
+
+  
+
+
+
+
+
+  
+
 
 
     </script>
