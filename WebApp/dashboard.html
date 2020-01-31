@@ -31,7 +31,7 @@
             <div class="mdc-drawer__content">
                 <div class="user-info">
                     <p class="name">AMCOM</p>
-                    <p class="email">dashboard@amcom.co</p>
+                    <p class="email">dashboard@amcom.com.br</p>
                 </div>
 
                 <div class="mdc-list-group">
@@ -132,8 +132,19 @@
                                             <i class="mdi mdi-account-cash-outline"></i>
                                         </div>
                                         <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                                            <h6 class="item-subject font-weight-normal">Faturamento: R$ 12.529,83</h6>
+                                            <h6 class="item-subject font-weight-normal">Faturamento: R$ 9.118,98</h6>
                                             <small class="text-muted"> Dez-2019</small>
+                                        </div>
+                                    </li>
+                                    <li class="mdc-list-item" role="menuitem">
+                                        <div class="item-thumbnail item-thumbnail-icon">
+                                            <i class="mdi mdi-account-cash-outline"></i>
+                                        </div>
+                                        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="item-subject font-weight-normal">
+                                                Faturamento: R$31.365,57
+                                            </h6>
+                                            <small class="text-muted"> Jan-2019</small>
                                         </div>
                                     </li>
                                     <!--<li class="mdc-list-item" role="menuitem">
@@ -267,7 +278,7 @@
                                 <div class="mdc-card info-card info-card--danger">
                                     <div class="card-inner">
                                         <h5 class="card-title">Valor Faturado até o momento</h5>
-                                        <h5 class="font-weight-light pb-2 mb-1 border-bottom">R$ 69.976,81‬</h5>
+                                        <h5 class="font-weight-light pb-2 mb-1 border-bottom">R$ ‭79.095,79‬‬</h5>
                                         <p class="tx-12 text-muted">8,7% meta atingida</p>
                                         <div class="card-icon-wrapper">
                                             <i class="material-icons">money_off</i>
@@ -335,7 +346,7 @@
                 text: ''
             },
             xAxis: {
-                categories: ['Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Janeiro']
+                categories: ['Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Janeiro', 'Fevereiro', 'Março']
             },
             labels: {
                 items: [{
@@ -353,7 +364,8 @@
             series: [{
                 type: 'column',
                 name: 'Total OSs Enviadas (R$)',
-                data: [38670.24, 41780.36, 19440.28, 6188.98, 4862.41, 126067.91, 116486.01],
+                data: [0,38670.24, 41780.36, 19440.28, 6188.98, 4862.41, 126067.91, 116486.01, 336969.37
+            ],
                 color: '#5166C0',
                 dataLabels: {
                     enabled: true,
@@ -370,7 +382,8 @@
             }, {
                 type: 'column',
                 name: 'Total OSs Faturadas(R$)',
-                data: [4200.91, 29447.37, 13251.32, 1326.57, 12168.74, 9581.90, 12137.75],
+                data: [4200.91, 29447.37, 13251.32, 1326.57, 12168.74, 9581.90, 9118.98, 31365.57,0
+            ],
                 color: '#64B448',
                 dataLabels: {
                     enabled: true,
@@ -384,23 +397,24 @@
                         fontFamily: 'Verdana, sans-serif'
                     }
                 }
-            }, {
-                type: 'spline',
-                name: 'PFs não Faturados',
-                data: [7500.00, 2700.00, 1300.00, 1000.00, 1600.00, 25500.00, 22900.00],
-                color: '#EA4335',
-                marker: {
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[3],
-                    fillColor: 'white'
                 },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function () {
-                        return this.y / 100;
-                    }
-                }
-            }
+            //    {
+            //    type: 'spline',
+            //    name: 'PFs não Faturados',
+            //    data: [7500.00, 2700.00, 1300.00, 1000.00, 1600.00, 25500.00, 23500.00, 67000.00 ],
+            //    color: '#EA4335',
+            //    marker: {
+            //        lineWidth: 2,
+            //        lineColor: Highcharts.getOptions().colors[3],
+            //        fillColor: 'white'
+            //    },
+            //    dataLabels: {
+            //        enabled: true,
+            //        formatter: function () {
+            //            return this.y / 100;
+            //        }
+            //    }
+            //}
                 //, {
                 //    type: 'pie',
                 //    name: 'Total de OSs',

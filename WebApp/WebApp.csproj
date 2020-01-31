@@ -645,6 +645,7 @@
     <Content Include="ata_arquivos\props015.xml" />
     <Content Include="ata_arquivos\props017.xml" />
     <Content Include="ata_arquivos\props019.xml" />
+    <Content Include="index.html" />
     <Content Include="login-invalido.html" />
     <Content Include="historico.html" />
     <Content Include="trello.html" />
